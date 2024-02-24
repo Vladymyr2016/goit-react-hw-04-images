@@ -1,0 +1,10 @@
+.ulItem {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
