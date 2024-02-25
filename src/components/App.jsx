@@ -100,7 +100,7 @@ const App = () => {
     };
 
     fetchData();
-  }, [page, q]);
+  }, [state.page, state.q]);
 
   // async componentDidMount() {
   //   try {
