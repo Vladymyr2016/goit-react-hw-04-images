@@ -65,13 +65,14 @@ const App = () => {
   };
   const [state, dispatch] = useReducer(appReducer, initialState);
   const { items, loading, isOpen, image, page, q } = state;
+  console.log(state);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: 'setLoading', payload: true });
-        const { hits } = await FeatchInfo();
-        dispatch({ type: 'setItems', payload: { hits } });
+        const { hits } = await FeatchInfo(q);
+        dispatch({ type: 'setItems', payload: hits });
       } catch (error) {
         dispatch({ type: 'setError', payload: error });
       } finally {
@@ -87,10 +88,11 @@ const App = () => {
       if (page !== state.page || q !== state.q) {
         try {
           dispatch({ type: 'setLoading', payload: true });
+          console.log(q);
           const { hits } = q
             ? await FeatchInfo({ page, q })
             : await FeatchInfo({ page });
-          dispatch({ type: 'setItems', payload: { hits } });
+          dispatch({ type: 'setItems', payload: hits });
         } catch (error) {
           dispatch({ type: 'setError', payload: error });
         } finally {

@@ -6,15 +6,12 @@ const ImageGallery = ({ hits, openModal }) => {
   console.log(hits);
   return (
     <ul className={s.ulItem}>
-      {hits.map((hit, index) => {
-        return (
-          <ImageGalleryItem
-            key={index + hit.id}
-            {...hit}
-            openModal={openModal}
-          />
-        );
-      })}
+      {hits.length > 0 &&
+        hits.map(hit => {
+          return (
+            <ImageGalleryItem key={hit.id} {...hit} openModal={openModal} />
+          );
+        })}
     </ul>
   );
 };
