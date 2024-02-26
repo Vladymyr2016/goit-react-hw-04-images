@@ -81,7 +81,7 @@ const App = () => {
     };
 
     fetchData();
-  }, []);
+  }, [q]);
 
   useEffect(() => {
     const fetchData = async () => {
