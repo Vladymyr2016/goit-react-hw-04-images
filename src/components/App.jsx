@@ -52,7 +52,7 @@ const App = () => {
       case 'setItems':
         return {
           ...state,
-          items: action.payload,
+          items: [...state.items, ...action.payload],
         };
       case 'setError':
         return {
