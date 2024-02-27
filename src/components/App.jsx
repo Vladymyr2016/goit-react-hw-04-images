@@ -83,7 +83,7 @@ const App = () => {
     };
 
     fetchData();
-  }, [page, q, page, q]);
+  }, [state.page, state.q, page, q]);
 
   const handleSeeMoreInfo = image => {
     // this.setState({ isOpen: true, image });
