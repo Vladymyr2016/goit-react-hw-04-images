@@ -26,7 +26,7 @@ const App = () => {
           ...state,
           page: state.page + 1,
         };
-      case 'change':
+      case 'changeState':
         return {
           ...state,
           q: action.payload,
@@ -83,38 +83,7 @@ const App = () => {
     };
 
     fetchData();
-  }, [state.page, state.q, page, q]);
-
-  // async componentDidMount() {
-  //   try {
-  //     this.setState({ loading: true });
-  //     const { hits } = await FeatchInfo();
-
-  //     this.setState({ items: hits });
-  //   } catch (error) {
-  //     this.setState({ error });
-  //   } finally {
-  //     this.setState({ loading: false });
-  //   }
-  // }
-
-  // async componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.page !== this.state.page || prevState.q !== this.state.q) {
-  //     try {
-  //       this.setState({ loading: true, error: null });
-  //       const { hits } = this.state.q
-  //         ? await FeatchInfo({ page: this.state.page, q: this.state.q })
-  //         : await FeatchInfo({ page: this.state.page });
-  //       this.setState(prev => ({
-  //         items: [...prev.items, ...hits],
-  //       }));
-  //     } catch (error) {
-  //       this.setState({ error });
-  //     } finally {
-  //       this.setState({ loading: false });
-  //     }
-  //   }
-  // }
+  }, [page, q, page, q]);
 
   const handleSeeMoreInfo = image => {
     // this.setState({ isOpen: true, image });
