@@ -65,39 +65,20 @@ const App = () => {
   };
   const [state, dispatch] = useReducer(appReducer, initialState);
   const { items, loading, isOpen, image, page, q } = state;
-  console.log(state);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch({ type: 'setLoading', payload: true });
-        const { hits } = await FeatchInfo(q);
+        console.log(q);
+        const { hits } = q
+          ? await FeatchInfo({ page, q })
+          : await FeatchInfo({ page });
         dispatch({ type: 'setItems', payload: hits });
       } catch (error) {
         dispatch({ type: 'setError', payload: error });
       } finally {
         dispatch({ type: 'setLoading', payload: false });
-      }
-    };
-
-    fetchData();
-  }, [q]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (page !== state.page || q !== state.q) {
-        try {
-          dispatch({ type: 'setLoading', payload: true });
-          console.log(q);
-          const { hits } = q
-            ? await FeatchInfo({ page, q })
-            : await FeatchInfo({ page });
-          dispatch({ type: 'setItems', payload: hits });
-        } catch (error) {
-          dispatch({ type: 'setError', payload: error });
-        } finally {
-          dispatch({ type: 'setLoading', payload: false });
-        }
       }
     };
 
