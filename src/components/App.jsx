@@ -71,9 +71,7 @@ const App = () => {
       try {
         dispatch({ type: 'setLoading', payload: true });
         console.log(q);
-        const { hits } = q
-          ? await FeatchInfo({ page, q })
-          : await FeatchInfo({ page });
+        const { hits } = q ? await FeatchInfo(q, page) : await FeatchInfo(page);
         dispatch({ type: 'setItems', payload: hits });
       } catch (error) {
         dispatch({ type: 'setError', payload: error });
